@@ -39,6 +39,7 @@ Usage
 ###2. Add the "placeholder" attribute to your form elements###
 
     <input type="text" name="name" value="" id="name" placeholder="Enter your name…" />
+    <textarea name="msg" id="msg" placeholder="Enter a message…"></textarea>
 
 ###3. Fire the plugin###
 
