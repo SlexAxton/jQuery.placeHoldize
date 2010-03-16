@@ -1,0 +1,56 @@
+jQuery.placeHoldize
+===================
+
+Introduction
+------------
+
+jQuery.placeHoldize is (obviously) a jQuery plug-in which simulate
+the HTML5 "placeholder" attribute for every browser which is not WebKit-powered.
+It also simulate it for "textarea"s as the WebKit only support it on "input"s.
+
+But what does the "placeholder" attribute ?
+-------------------------------------------
+
+If you already know it, you can safely skip this section.
+
+Quoted from [Google Doctype](http://code.google.com/p/doctype/wiki/InputPlaceholderAttribute):
+> The input placeholder attribute represents a short hint (a word or short phrase)
+> intended to aid the user with data entry.  
+> A hint could be a sample value or a brief description of the expected format.
+>
+> The input placeholder attribute can be any string, but must not contain carriage returns or line breaks.
+> 
+> The placeholder attribute can be used on the following elements: input, textarea
+
+###Further reading###
+
+* [Dive into HTML5](http://diveintohtml5.org/forms.html#placeholder)
+* [Beyond Standards](http://www.beyondstandards.com/archives/input-placeholders/)
+* [WHATWG](http://www.whatwg.org/specs/web-apps/current-work/multipage/common-input-element-attributes.html#the-placeholder-attribute)
+
+Usage
+-----
+
+###1. Include the necessary JavaScript files###
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/path/to/placeHoldize/jquery.placeholdize-0.2.0.min.js"></script>
+
+###2. Add the "placeholder" attribute to your form elements###
+
+    <input type="text" name="name" value="" id="name" placeholder="Enter your name…" />
+
+###3. Fire the plugin###
+
+    ( function( $ )
+    {
+        // Select all inputs and textareas that have a "placeholder" attribute.
+        $( function()
+        {
+            $( 'input[placeholder], textarea[placeholder]' ).placeHoldize();
+        
+        } );
+    
+    } )( jQuery );
+
+###4. That's it!###
