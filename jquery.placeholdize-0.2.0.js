@@ -55,7 +55,6 @@
                 // Remove the "placeholder" as it is no longer used
                 // and add a "placeholdized" class to be able to reference
                 // these elements later.
-                // TODO: Make this configurable.
                 $this.removeAttr( 'placeholder' )
                      .addClass( 'placeholdized' )
                      .addClass( 'placeholder-visible' );
