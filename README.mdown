@@ -4,7 +4,7 @@ jQuery.placeHoldize
 Introduction
 ------------
 
-jQuery.placeHoldize is (obviously) a jQuery plug-in which simulate
+jQuery.placeHoldize is a jQuery plug-in which simulate
 the HTML5 "placeholder" attribute for every browser which does not support it.
 It also simulate it for "textarea"s as the WebKit only support it on "input"s.
 Additionnaly, the plugin will take care of emptying the "placeholdized" elements
