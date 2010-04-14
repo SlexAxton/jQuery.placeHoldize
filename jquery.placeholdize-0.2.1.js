@@ -99,10 +99,38 @@
                 } );
             }
             
+            function _emptyFormOnSubmit( $elements )
+            {
+                var $forms = $elements.closest( 'form' );
+                    
+                $forms.submit( function()
+                {
+                    var $this = $( this );
+                    
+                    // This check avoid processing more than once the same form.
+                    if( $this.data( 'placeHoldize.submitHandlerCalled' ) ) {
+                        
+                        return;
+                    }
+                    
+                    $this.find( '.placeholder-visible' )
+                         .val( '' )
+                         .data( 'placeHoldize.submitHandlerCalled', true );
+                } );
+                
+                return true;
+            }
+            
             return function()
             {
                 // Apply the _placeHoldize function on every element.
-                return this.each( _placeHoldize );
+                this.each( _placeHoldize );
+                
+                // Empty the "value" attribute before the form is submitted to fully mimics the
+                // HTML5 "placeholder" attribute behavior.
+                _emptyFormOnSubmit( this );
+                
+                return this;
             };
         
         } )();

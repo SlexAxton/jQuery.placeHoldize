@@ -2,6 +2,4 @@
 TODO
 ====
 
- * Empty the "value" attribute before the form is submitted to fully mimics the
-   HTML5 "placehlder" attribute behavior.
- * Make these kind of operations customizable.
+ * Make the plugins customizable (class names, enable form submit, etc. )
