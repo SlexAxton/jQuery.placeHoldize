@@ -27,7 +27,7 @@
     {
         $.fn.placeHoldize = ( function()
         {
-            function _placeHoldize()
+            function _placeHoldize( force )
             {
                 // Store a reference to the current jQuery element.
                 var $this = $( this );
@@ -40,8 +40,8 @@
                 // It also checks if the current element have this attribute
                 // and that it's not a textarea (as Safari does only support this
                 // attribute on input elements).
-                if( ( $.browser.webkit || !$this.attr( 'placeholder' ) ) && !$this.is( 'textarea' ) ) {
-                    
+                if( !force && ( $.browser.webkit || !$this.attr( 'placeholder' ) ) && !$this.is( 'textarea' ) )
+                {
                     // There is no need for this plugin.
                     return;
                 }
@@ -68,8 +68,8 @@
                     
                     // If the element's value is equal to the previously setted
                     // placeholder's value:
-                    if( $this.val() === placeHolder ) {
-                        
+                    if( $this.val() === placeHolder )
+                    {
                         // Empty the value.
                         $this.val( '' );
                         
@@ -87,8 +87,8 @@
                     var $this = $( this );
                     
                     // If the element's value is empty:
-                    if( $this.val() === '' ) {
-                        
+                    if( $this.val() === '' )
+                    {
                         // Restore the placeholder's value.
                         $this.val( placeHolder );
                         
@@ -121,10 +121,13 @@
                 return true;
             }
             
-            return function()
+            return function( force )
             {
                 // Apply the _placeHoldize function on every element.
-                this.each( _placeHoldize );
+                this.each( function()
+                {
+                    _placeHoldize.call( this, force );
+                } );
                 
                 // Empty the "value" attribute before the form is submitted to fully mimics the
                 // HTML5 "placeholder" attribute behavior.

@@ -7,7 +7,7 @@ Introduction
 jQuery.placeHoldize is a jQuery plug-in which simulate
 the HTML5 "placeholder" attribute for every browser which does not support it.
 It also simulate it for "textarea"s as the WebKit only support it on "input"s.
-Additionnaly, the plugin will take care of emptying the "placeholdized" elements
+Additionnaly, the plug-in will take care of emptying the "placeholdized" elements
 before the form they're in (if any) is actually submitted. This to fully mimics
 the native behaviour of the attribute.
 
@@ -44,20 +44,37 @@ Usage
     <input type="text" name="name" value="" id="name" placeholder="Enter your name…" />
     <textarea name="msg" id="msg" placeholder="Enter a message…"></textarea>
 
-###3. Fire the plugin###
+###3. Fire the plug-in###
 
     ( function( $ )
     {
         // Select all inputs and textareas that have a "placeholder" attribute.
-        $( function()
-        {
-            $( 'input[placeholder], textarea[placeholder]' ).placeHoldize();
-        
-        } );
+        $(
+            function()
+            {
+                $( 'input[placeholder], textarea[placeholder]' ).placeHoldize();
+            }
+        );
     
     } )( jQuery );
 
-###4. That's it!###
+###4. Options###
+
+If you want to "force" the plug-in to fire even in browsers that have native support for the "placeholder" attribute, just supply "true" to the plug-in method.
+
+    ( function( $ )
+    {
+        // Select all elements that have a "placeholder" attribute.
+        $(
+            function()
+            {
+                $( '[placeholder]' ).placeHoldize( true );
+            } 
+        );
+    
+    } )( jQuery );
+
+###5. That's it!###
 
 License
 -------
