@@ -27,20 +27,19 @@
     {
         $.fn.placeHoldize = ( function()
         {
+            // Feature test for placeholder support as found in Modernizr
+            // as well as in http://miketaylr.com/code/input-type-attr.html
+            // via Mike Taylor's work
+            var supportsPlaceholder = (function(elem) {
+              return !!(elem.placeholder === '') && !!(elem.placeholder !== undefined);
+            })(document.createElement('input'));
+
             function _placeHoldize( force )
             {
                 // Store a reference to the current jQuery element.
                 var $this = $( this );
                 
-                // As Webkit is the only rendering engine which supports
-                // the "placeholder" attributes on the "input" tag and as
-                // jQuery doesn't provide an easy way (even through jQuery.support)
-                // to detect the support of this attribute, jQuery.placeHoldize
-                // use $.browser even if it against the recommendations, sorry.
-                // It also checks if the current element have this attribute
-                // and that it's not a textarea (as Safari does only support this
-                // attribute on input elements).
-                if( !force && ( $.browser.webkit || !$this.attr( 'placeholder' ) ) && !$this.is( 'textarea' ) )
+                if( !force && ( supportsPlaceholder || !$this.attr( 'placeholder' ) ) && !$this.is( 'textarea' ) )
                 {
                     // There is no need for this plugin.
                     return;
